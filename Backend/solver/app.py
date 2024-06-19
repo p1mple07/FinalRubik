@@ -8,7 +8,7 @@ import numpy as np
 from flask_cors import CORS
 
 app = Flask(__name__)
-CORS(app, resources={r"/upload": {"origins": "https://final-rubik.vercel.app"}})  # Allow requests only from your frontend domain
+CORS(app, resources={{"origins": "https://final-rubik.vercel.app"}})  # Allow requests only from your frontend domain
 
 app.config['UPLOAD_FOLDER'] = 'uploads/'
 os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
@@ -63,7 +63,7 @@ def classify_color(rgb):
     predicted_label = svm_model.predict(scaled_rgb)
     return predicted_label[0]
 
-@app.route('/upload', methods=['POST'])
+@app.route('/', methods=['POST'])
 def upload_files():
     if 'files' not in request.files:
         return jsonify({'error': 'No files part'}), 400

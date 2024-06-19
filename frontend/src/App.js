@@ -24,7 +24,7 @@ const UploadForm = () => {
     }
 
     try {
-      const response = await fetch('https://final-rubik-ii6y.vercel.app/upload', {
+      const response = await fetch('https://final-rubik-ii6y.vercel.app/', {
         method: 'POST',
         body: formData,
       });
