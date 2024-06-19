@@ -1,18 +1,21 @@
 {
-  "version": 2,
-  "builds": [
-    {
-      "src": "./Dockerfile",
-      "use": "@vercel/docker"
-    }
-  ],
-  "routes": [
-    {
-      "src": "/",
-      "methods": ["POST"],
-      "headers": {
-      "Access-Control-Allow-Origin": "https://final-rubik.vercel.app"
-    }
-    }
-  ]
+"version": 2,
+"builds": [
+{
+"src": "./index.py",
+"use": "@vercel/python",
+"config": {
+"runtime": "python3.11"
+}
+}
+],
+"routes": [
+{
+"src": "/",
+"methods": ["POST"],
+"headers": {
+"Access-Control-Allow-Origin": "https://final-rubik.vercel.app"
+}
+}
+]
 }
