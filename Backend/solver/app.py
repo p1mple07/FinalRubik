@@ -7,9 +7,8 @@ import joblib
 import numpy as np
 from flask_cors import CORS
 
-
 app = Flask(__name__)
-cors = CORS(app, resources={r"/upload": {"origins": "https://final-rubik.vercel.app"}})
+CORS(app, resources={r"/upload": {"origins": "https://final-rubik.vercel.app"}})  # Allow requests only from your frontend domain
 
 app.config['UPLOAD_FOLDER'] = 'uploads/'
 os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
