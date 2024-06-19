@@ -103,7 +103,7 @@ def upload_files():
             file.write(element + "\n")
 
     # solver_path = os.path.join(os.path.dirname(__file__), 'Solver.exe')
-    result = subprocess.run(["../Solver.exe", "cube_data.txt"], capture_output=True, text=True)
+    result = subprocess.run(["./Solver", "cube_data.txt"], capture_output=True, text=True)
     
     if result.returncode == 0:
         response = {'result': result.stdout}
@@ -113,6 +113,3 @@ def upload_files():
         print("C++ solver error:", result.stderr)
     print(jsonify(response))
     return jsonify({'result':response})
-
-if __name__ == '__main__':
-    app.run(debug=True)
