@@ -7,8 +7,10 @@ import joblib
 import numpy as np
 from flask_cors import CORS
 
+
 app = Flask(__name__)
-CORS(app)
+cors = CORS(app, resources={r"/upload": {"origins": "https://final-rubik.vercel.app"}})
+
 app.config['UPLOAD_FOLDER'] = 'uploads/'
 os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif'}
