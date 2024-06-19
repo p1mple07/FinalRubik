@@ -8,7 +8,7 @@ import numpy as np
 from flask_cors import CORS
 
 app = Flask(__name__)
-CORS(app, resources={{"origins": "https://final-rubik.vercel.app"}})  # Allow requests only from your frontend domain
+CORS(app, resources={r"/": {"origins": "https://final-rubik.vercel.app"}})
 
 app.config['UPLOAD_FOLDER'] = 'uploads/'
 os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
@@ -104,7 +104,7 @@ def upload_files():
             file.write(element + "\n")
 
     # solver_path = os.path.join(os.path.dirname(__file__), 'Solver.exe')
-    result = subprocess.run(["./Solver", "cube_data.txt"], capture_output=True, text=True)
+    result = subprocess.run(["./Solver.exe", "cube_data.txt"], capture_output=True, text=True)
     
     if result.returncode == 0:
         response = {'result': result.stdout}
